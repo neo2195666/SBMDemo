@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--id就是接⼝中的⽅法名-->
+<!--resultType查询结果回的类型-->
+<mapper namespace="com.example.sbmdemo.mapper.UserMapper">
+    <!--select语句-->
+    <select id="getUserList" resultType="com.example.sbmdemo.pojo.User">
+        select * from mybatis.user
+    </select>
+
+    <!--select语句-->
+    <select id="selectById" parameterType="int" resultType="com.example.sbmdemo.pojo.User">
+        select * from mybatis.user where id = #{id}
+    </select>
+
+    <!--insert语句-->
+    <insert id="insertData" parameterType="com.example.sbmdemo.pojo.User">
+        insert into mybatis.user (id,name,pwd) values (#{id},#{name},#{pwd})
+    </insert>
+
+    <!--update语句-->
+    <insert id="updateData" parameterType="com.example.sbmdemo.pojo.User">
+        update mybatis.user set name=#{name},pwd=#{pwd} where id=#{id};
+    </insert>
+
+    <!--delete语句-->
+    <insert id="deleteData" parameterType="int">
+        delete from mybatis.user where id=#{id};
+    </insert>
+
+    <!--结果集映射，如果实体类的属性名与数据库字段不⼀致，可以使⽤结
+    果集映射，来指定类的属性和数据库字段的映射-->
+    <resultMap id="mapDemo" type="com.example.sbmdemo.pojo.User">
+        <result column="id" property="id"></result>
+        <result column="name" property="username"></result>
+        <result column="password" property="password"></result>
+    </resultMap>
+    <select id="getUserList2" resultMap="mapDemo">
+        select id,name,password from mybatis.user
+    </select>
+
+</mapper>
