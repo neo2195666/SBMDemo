@@ -6,9 +6,10 @@ import com.example.sbmdemo.pojo.User;
 import com.example.sbmdemo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Component
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
